@@ -1,0 +1,1 @@
+from app.models.ml_model import predict_species
