@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Iris Species Prediction</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</head>
+<body>
+    <h1>Iris Species Prediction</h1>
+    <form id="irisForm">
+        <label for="sepal_length">Sepal Length:</label><br>
+        <input type="number" id="sepal_length" name="sepal_length" step="0.1"><br>
+        <label for="sepal_width">Sepal Width:</label><br>
+        <input type="number" id="sepal_width" name="sepal_width" step="0.1"><br>
+        <label for="petal_length">Petal Length:</label><br>
+        <input type="number" id="petal_length" name="petal_length" step="0.1"><br>
+        <label for="petal_width">Petal Width:</label><br>
+        <input type="number" id="petal_width" name="petal_width" step="0.1"><br>
+        <input type="submit" value="Predict">
+    </form>
+    <p id="prediction"></p>
+    <script>
+        $("#irisForm").submit(function(event) {
+            event.preventDefault();
+            var formData = {
+                sepal_length: $("#sepal_length").val(),
+                sepal_width: $("#sepal_width").val(),
+                petal_length: $("#petal_length").val(),
+                petal_width: $("#petal_width").val()
+            };
+            $.ajax({
+                url: "http://localhost:8000/predict/",
+                type: "POST",
+                contentType: "application/json",
+                data: JSON.stringify(formData),
+                success: function(data) {
+                    $("#prediction").text("Predicted species: " + data.species);
+                }
+            });
+        });
+    </script>
+</body>
+</html>
