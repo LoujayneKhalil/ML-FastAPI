@@ -24,3 +24,16 @@ A step by step series of examples that tell you how to get a development environ
 ```bash
 pip install -r requirements.txt
 ```
+3. Run the server
+   
+```bash
+uvicorn main:app --reload
+```
+
+### Built With
+ - FastAPI - The web framework used
+ - Uvicorn - ASGI server
+### Authors
+Loujayne Khalil - (https://github.com/LoujayneKhalil)
+### License
+ - This project is licensed under the MIT License - see the LICENSE.md file for details
